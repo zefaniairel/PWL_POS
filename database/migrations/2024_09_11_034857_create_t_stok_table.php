@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('m_stok', function (Blueprint $table) {
+        Schema::create('t_stok', function (Blueprint $table) {
             $table->id('stok_id');
             $table->unsignedBigInteger('supplier_id')->index(); //indexing untuk ForeignKey
             $table->unsignedBigInteger('barang_id')->index(); //indexing untuk ForeignKey
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('m_stok');
+        Schema::dropIfExists('t_stok');
     }
 };

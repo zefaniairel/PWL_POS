@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('m_penjualan', function (Blueprint $table) {
+        Schema::create('t_penjualan', function (Blueprint $table) {
             $table->id('penjualan_id');
             $table->unsignedBigInteger('user_id')->index(); //indexing untuk ForeignKey
             $table->string('pembeli', 50)->unique();
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             //mendefiniskan foreign key pada kolom level_id mengacu pada kolom level_id di table m_level
-            $table->foreign('user_id')->references('user_id')->on('m_user');
+            $table->foreign('user_id')->references('user_id')->on('t_user');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('m_penjualan');
+        Schema::dropIfExists('t_penjualan');
     }
 };
