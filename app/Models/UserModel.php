@@ -11,4 +11,8 @@ class UserModel extends Model
 
     protected $table = 'm_user';        //mendefinisikannamatabel yg digunakan oleh model lain
     protected $primaryKey = 'user_id';  //mendefinisikan primary key dari tabel yg digunakan
+
+    // The attributes that are mass assignable.
+
+    protected $fillable = ['level_id', 'username', 'nama'];
 }
