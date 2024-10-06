@@ -263,4 +263,9 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function show_ajax(string $id) {
+        $user = UserModel::find($id);
+        return view('user.show_ajax', ['user' => $user]);
+    }
+    
 }
