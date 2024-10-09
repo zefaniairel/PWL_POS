@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
@@ -32,6 +33,18 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
 // Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
 // Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+
+// Pertemuan6
+Route::pattern('id', '[0-9]+'); //artinya ketika ada parameter {id}, maka harus berupa angka
+
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'postlogin']);
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::middleware(['auth'])->group(function(){ // artinya semua route di dalam group ini harus login dulu
+   // masukkan semua route yg perlu autentikasi di sini
+
+});
 
 // Pertemuan5
 Route::get('/', [WelcomeController::class,'index']);
