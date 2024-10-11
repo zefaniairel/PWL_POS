@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable; // implementasi class authenticatable
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use PhpParser\Node\Expr\Cast\String_;
 
 class UserModel extends Authenticatable
 {
@@ -24,15 +25,39 @@ class UserModel extends Authenticatable
     protected $casts = ['password' => 'hashed']; //casting password agar otomatis di hash
 
     /**
-     * Relasi ke tabel leve
+     * Relasi ke tabel level
      */
     public function level(): BelongsTo
     {
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
 
-    public function barang():HasMany
+    /**
+     * Mendapatkan nama role
+     */
+    public function getRoleName(): String
     {
-        return $this->hasMany(StockModel::class, 'stock_id', 'stock_id');
+        return $this->level->level_nama;
     }
+
+    /**
+     * Cek apakah user memiliki role tertentu
+     */
+    public function hasRole($role): bool
+    {
+        return $this->level->level_kode == $role;
+    }
+
+    /**
+     * Mendapatkan kode role
+     */
+    public function getRole()
+    {
+        return $this->level->level_kode;
+    }
+
+    // public function barang():HasMany
+    // {
+    //     return $this->hasMany(StockModel::class, 'stock_id', 'stock_id');
+    // }
 }
