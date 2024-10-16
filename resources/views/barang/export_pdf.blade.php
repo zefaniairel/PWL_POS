@@ -28,8 +28,8 @@
         }
 
         img.image {
-            width: auto;
-            height: 80px;
+            width: 100px;
+            height: auto;
             max-width: 150px;
             max-height: 150px;
         }
@@ -71,13 +71,18 @@
         .border-all td {
             border: 1px solid;
         }
+
+        .small-image {
+            width: 100px; /* Atur lebar yang diinginkan */
+            height: auto; /* Menjaga rasio aspek */
+        }
     </style>
 </head>
 
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}"></td>
+            <td width="15%" class="text-center"><img src="{{ asset('images/polinema logo.png') }}" class="small-image"></td>
             <td width="85%">
                 <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN
                     PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</span>
