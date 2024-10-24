@@ -22,12 +22,6 @@
         .d-block {
             display: block;
         }
-        img.image {
-            width: auto;
-            height: 80px;
-            max-width: 150px;
-            max-height: 150px;
-        }
         .text-right {
             text-align: right;
         }

@@ -5,8 +5,8 @@
             <h3 class="card-title">Daftar Kategori</h3>
             <div class="card-tools">
                 <button onclick="modalAction('{{ url('/kategori/import') }}')" class="btn btn-info">Import Kategori</button>
-                <a href="{{ url('/kategori/export_excel') }}" class="btn btn-primary"><i class="fa fa-fileexcel"></i> Export Kategori (excel) </a>
-                <a href="{{ url('/kategori/export_pdf') }}" class="btn btn-warning"><i class="fa fa-filepdf"></i> Export Kategori (pdf) </a>
+                <a href="{{ url('/kategori/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export Kategori (excel) </a>
+                <a href="{{ url('/kategori/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Kategori (pdf) </a>
                 <button onclick="modalAction('{{ url('/kategori/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
             
-            <table class="table table-bordered table-sm table-striped table-hover" id="table-kategori">
+            <table class="table table-bordered table-sm table-striped table-hover" id="table_kategori">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -44,7 +44,7 @@
         }
         var tableKategori;
         $(document).ready(function() {
-        tableKategori = $('#table-kategori').DataTable({
+        tableKategori = $('#table_kategori').DataTable({
             processing: true,
             serverSide: true,
             ajax: {
@@ -57,7 +57,7 @@
             },
             columns: [{
                 // nomor urut dari laravel datatable addIndexColumn()
-                data: "kategori_id",
+                data: "DT_RowIndex",
                 className: "text-center",
                 width: "5%",
                 orderable: false,
@@ -83,7 +83,7 @@
             }]
         });
 
-        $('#table-kategori_filter input').unbind().bind().on('keyup', function(e) {
+        $('#table_kategori_filter input').unbind().bind().on('keyup', function(e) {
                 if (e.keyCode == 13) { // enter key
                     tableKategori.search(this.value).draw();
                 }

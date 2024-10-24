@@ -9,6 +9,7 @@
                 <a href="{{ url('/level/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export level (pdf) </a>
                 <button onclick="modalAction('{{ url('/level/create_ajax') }}')" class="btn btn-success"> Tambah Data (Ajax) </button>
         </div>
+    </div>
         <div class="card-body">
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
@@ -33,7 +34,8 @@
     <div id="myModal" class="modal fade animate shake" tabindex="-1" data-backdrop="static" data-keyboard="false"
     data-width="75%"></div>
 @endsection
-
+@push('css')
+@endpush
 @push('js')
     <script>
         function modalAction(url = '') {
@@ -44,6 +46,7 @@
         var tableLevel;
         $(document).ready(function() {
             tableLevel = $('#table-level').DataTable({
+
                 processing: true,
                 serverSide: true,
                 ajax: {
