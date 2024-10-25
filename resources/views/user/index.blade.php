@@ -121,13 +121,14 @@
                     searchable: false
                 }]
             });
+            
             $('#table-user_filter input').unbind().bind().on('keyup', function(e) {
                 if (e.keyCode == 13) { // enter key
                     tableUser.search(this.value).draw();
                 }
             });
             $('#level_id').change(function() {
-                tableBarang.draw();
+                tableUser.draw();
             });
         });
     </script>
