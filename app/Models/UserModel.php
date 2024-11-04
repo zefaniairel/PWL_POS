@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -38,6 +39,12 @@ class UserModel extends Authenticatable implements JWTSubject
         return $this->hasMany(StockModel::class, 'stock_id', 'stock_id');
     }
 
+    protected function foto(): Attribute{
+        return Attribute::make(
+            get: fn ($foto) => url('/storage/posts/'.$foto),
+        );
+    }
+    
     public function getRoleName(): string
     {
         return $this->level->level_nama;

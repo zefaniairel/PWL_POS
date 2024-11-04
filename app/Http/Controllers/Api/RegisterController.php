@@ -16,7 +16,8 @@ class RegisterController extends Controller
             'username'  => 'required',
             'nama'      => 'required',
             'password'  => 'required|min:5|confirmed',
-            'level_id'  => 'required'
+            'level_id'  => 'required',
+            'foto'      => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
 
         // if validations fails
@@ -25,12 +26,13 @@ class RegisterController extends Controller
         }
 
         // create user
+        $foto  = $request->foto;
         $user = UserModel::create([
             'username'  => $request->username,
             'nama'      => $request->nama,
             'password'  => bcrypt($request->password),
             'level_id'  => $request->level_id,
-            'foto'      => $request->foto ?? null, // Menambahkan kolom foto
+            'foto'      => $foto->hashName(), // Menambahkan kolom foto
         ]);
 
         // return response JSON user is created

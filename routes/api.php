@@ -63,3 +63,5 @@ Route::post('stok', [StokController::class, 'store']);
 Route::get('stok/{stok}', [StokController::class, 'show']);
 Route::put('stok/{stok}', [StokController::class, 'update']);
 Route::delete('stok/{stok}', [StokController::class, 'destroy']);
+
+Route::post('/register1', App\Http\Controllers\Api\RegisterController::class)->name('register1');
